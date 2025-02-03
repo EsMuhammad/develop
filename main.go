@@ -8,6 +8,22 @@ import (
  "strconv"
 )
 
+func Strminus(a, b string)string{
+   return strings.ReplaceAll(a, b, "")
+}
+
+func Umnostr(a string, numstr int)string{
+    return strings.Repeat(a, numstr)
+}
+
+func Delstr(a string, numstr int)string{
+    leght := len(a)
+    if numstr <= 0 || leght < numstr{
+        return ""
+    }
+    return a[:leght/numstr]
+}
+
 func main() {
  scanner := bufio.NewScanner(os.Stdin)
  fmt.Println("Введите выражение: ")
@@ -34,13 +50,13 @@ func main() {
   result = computation.Strminus(a, b)
  case "*":
   num, err := strconv.Atoi(numstr)
-  if err != nil  num < 1  num > 10 {
+  if err != nil || num < 1 || num > 10 {
    panic("Число должно быть от 1 до 10 включительно.")
   }
   result = computation.Umnostr(a, num)
  case "/":
   num, err := strconv.Atoi(numstr)
-  if err != nil  num < 1  num > 10 {
+  if err != nil || num < 1 || num > 10 {
    panic("Число должно быть от 1 до 10 включительно.")
   }
   result = computation.Delstr(a, num)
